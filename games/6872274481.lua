@@ -1,4 +1,4 @@
-local run = function(func)
+slocal run = function(func)
 	func()
 end
 local cloneref = cloneref or function(obj)
@@ -8700,4 +8700,4 @@ run(function()
 									if (workspace:GetServerTimeNow() - bedwars.SwordController.lastAttack) < 0.02 then
 										break
 									end
-									local selfpos = selfrootpos + (killaurarange.Value > 14 and (selfrootpos - root
+									local selfpos
