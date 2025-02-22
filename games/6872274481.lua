@@ -8704,3 +8704,4 @@ run(function()
                                     bedwars.SwordController.lastAttack = workspace:GetServerTimeNow()
                                     bedwars.SwordController:attackEntity(root, swordmeta, sword.tool, selfpos)
                                 end
+																												end)
