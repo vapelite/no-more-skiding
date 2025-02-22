@@ -4,7 +4,7 @@ local loadstring = function(...)
 	if err and vape then 
 		vape:CreateNotification('Vape', 'Failed to load : '..err, 30, 'alert') 
 	end
-	return res
+	return resf
 end
 local isfile = isfile or function(file)
 	local suc, res = pcall(function() 
@@ -15,7 +15,7 @@ end
 local function downloadFile(path, func)
 	if not isfile(path) then
 		local suc, res = pcall(function() 
-			return game:HttpGet('https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/'..readfile('newvape/profiles/commit.txt')..'/'..select(1, path:gsub('newvape/', '')), true) 
+			return game:HttpGet('https://raw.githubusercontent.com/vapelite/VapeV4ForRoblox1/'..readfile('newvape/profiles/commit.txt')..'/'..select(1, path:gsub('newvape/', '')), true) 
 		end)
 		if not suc or res == '404: Not Found' then 
 			error(res) 
