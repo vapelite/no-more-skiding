@@ -8700,5 +8700,5 @@ run(function()
 									if (workspace:GetServerTimeNow() - bedwars.SwordController.lastAttack) < 0.02 then
 										break
 									end
-									local selfpos = selfrootpos + (killaurarange.Value > 14 and (selfrootpos - root.Position).Magnitude > 14.4 and (CFrame.lookAt(selfrootpos, root.Position).lookVector * ((selfrootpos - root.Position).Magnitude - 14)) or Vector3.zero)
-									bedwars.SwordController.lastAttack
+									local selfpos = selfrootpos + (killaurarange.Value > 14 and (selfrootpos - root.Position).Magnitude > 14.4 and (CFrame.lookAt(selfrootpos, root.Position).LookVector * ((selfrootpos - root.Position).Magnitude - 14)) or Vector3.zero)
+									bedwars.SwordController.lastAttack = workspace:GetServerTimeNow
