@@ -8370,8 +8370,7 @@ run(function()
 		Name = 'Effects',
 		List = WinEffectName
 	})
-end)
-	run(function()
+end)run(function()
 	local Killaura
 	local Targets
 	local Sort
@@ -8699,4 +8698,4 @@ end)
 									if (workspace:GetServerTimeNow() - bedwars.SwordController.lastAttack) < 0.02 then
 										break
 									end
-									local selfpos = selfrootpos + (killaurarange.Value > 14 and (selfrootpos - root.Position).magnitude > 14.4 and (CFrame.lookAt(selfrootpos, root.Position).lookVector * ((selfrootpos - root.Position).magnitude - 14)) or Vector3
+									local selfpos = selfrootpos + (killaurarange.Value > 14 and (selfrootpos - root.Position).magnitude > 14.4 and (CFrame.lookAt(selfrootpos, root.Position).lookVector * ((selfrootpos - root.Position).magnitude - 14)) or
