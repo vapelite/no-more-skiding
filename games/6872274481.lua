@@ -8371,9 +8371,7 @@ run(function()
 		List = WinEffectName
 	})
 end)
-	
-
-run(function()
+	run(function()
 	local Killaura
 	local Targets
 	local Sort
@@ -8508,16 +8506,16 @@ run(function()
 		if GuiLibrary.ObjectsThatCanBeSaved["Lobby CheckToggle"].Api.Enabled then
 			if store.matchState == 0 then return false end
 		end
-		if killauramouse.Enabled then
+		if Mouse.Enabled then
 			if not inputService:IsMouseButtonPressed(0) then return false end
 		end
-		if killauragui.Enabled then
+		if GUI.Enabled then
 			if bedwars.AppController:isLayerOpen(bedwars.UILayers.MAIN) then return false end
 		end
-		local sword = killaurahandcheck.Enabled and store.localHand or getSword()
+		local sword = Limit.Enabled and store.localHand or getSword()
 		if not sword or not sword.tool then return false end
 		local swordmeta = bedwars.ItemTable[sword.tool.Name]
-		if killaurahandcheck.Enabled then
+		if Limit.Enabled then
 			if store.localHand.Type ~= "sword" or bedwars.DaoController.chargingMaid then return false end
 		end
 		return sword, swordmeta
@@ -8551,7 +8549,7 @@ run(function()
 					local oldNearPlayer
 					repeat
 						task.wait()
-						if (killauraanimation.Enabled and not killauraswing.Enabled) then
+						if (Animation.Enabled and not Swing.Enabled) then
 							if killauraNearPlayer then
 								pcall(function()
 									if originalArmC0 == nil then
@@ -8559,9 +8557,9 @@ run(function()
 									end
 									if killauraplaying == false then
 										killauraplaying = true
-										for i,v in pairs(anims[killauraanimmethod.Value]) do
+										for i,v in pairs(anims[AnimationMode.Value]) do
 											if (not Killaura.Enabled) or (not killauraNearPlayer) then break end
-											if not oldNearPlayer and killauraanimationtween.Enabled then
+											if not oldNearPlayer and AnimationTween.Enabled then
 												gameCamera.Viewmodel.RightHand.RightWrist.C0 = originalArmC0 * v.CFrame
 												continue
 											end
@@ -8587,10 +8585,10 @@ run(function()
 					return oldPlaySound(tab, soundid, ...)
 				end
 				bedwars.ViewmodelController.playAnimation = function(Self, id, ...)
-					if id == 15 and killauraNearPlayer and killauraswing.Enabled and entityLibrary.isAlive then
+					if id == 15 and killauraNearPlayer and Swing.Enabled and entityLibrary.isAlive then
 						return nil
 					end
-					if id == 15 and killauraNearPlayer and killauraanimation.Enabled and entityLibrary.isAlive then
+					if id == 15 and killauraNearPlayer and Animation.Enabled and entityLibrary.isAlive then
 						return nil
 					end
 					return oldViewmodelAnimation(Self, id, ...)
@@ -8627,7 +8625,7 @@ run(function()
 								if originalRootC0 == nil then
 									originalRootC0 = RootC0.C0.p
 								end
-								if originalRootC0 and killauracframe.Enabled then
+								if originalRootC0 and Face.Enabled then
 									if targetedPlayer ~= nil then
 										local targetPos = targetedPlayer.RootPart.Position + Vector3.new(0, 2, 0)
 										local direction = (Vector3.new(targetPos.X, targetPos.Y, targetPos.Z) - entityLibrary.character.Head.Position).Unit
@@ -8653,9 +8651,8 @@ run(function()
 						task.wait()
 						if not Killaura.Enabled then break end
 						vapeTargetInfo.Targets.Killaura = nil
-						local plrs = AllNearPosition(killaurarange.Value, 10, killaurasortmethods[killaurasortmethod.Value], true)
+						local plrs = AllNearPosition(killaurarange.Value, 10, killaurasortmethods[Sort.Value], true)
 						local firstPlayerNear
-						-- Removed the partial code here that was causing syntax errors
 						if #plrs > 0 then
 							local sword, swordmeta = getAttackData()
 							if sword then
@@ -8668,11 +8665,11 @@ run(function()
 									local localfacing = entityLibrary.character.HumanoidRootPart.CFrame.lookVector
 									local vec = (plr.RootPart.Position - entityLibrary.character.HumanoidRootPart.Position).unit
 									local angle = math.acos(localfacing:Dot(vec))
-									if angle >= (math.rad(killauraangle.Value) / 2) then
+									if angle >= (math.rad(AngleSlider.Value) / 2) then
 										continue
 									end
 									local selfrootpos = entityLibrary.character.HumanoidRootPart.Position
-									if killauratargetframe.Walls.Enabled then
+									if Targets.Walls.Enabled then
 										if not bedwars.SwordController:canSee({player = plr.Player, getInstance = function() return plr.Character end}) then continue end
 									end
 									if killauranovape.Enabled and store.whitelist.clientUsers[plr.Player.Name] then
@@ -8689,9 +8686,9 @@ run(function()
 											},
 											Player = plr.Player
 										}
-										if animationdelay <= tick() then
-											animationdelay = tick() + (swordmeta.sword.respectAttackSpeedForEffects and swordmeta.sword.attackSpeed or (killaurasync.Enabled and 0.24 or 0.14))
-											if not killauraswing.Enabled then
+										if AnimDelay <= tick() then
+											AnimDelay = tick() + (swordmeta.sword.respectAttackSpeedForEffects and swordmeta.sword.attackSpeed or (Sync.Enabled and 0.24 or 0.14))
+											if not Swing.Enabled then
 												bedwars.SwordController:playSwordEffect(swordmeta, false)
 											end
 											if swordmeta.displayName:find(" Scythe") then
@@ -8699,4 +8696,7 @@ run(function()
 											end
 										end
 									end
-									if (workspace:GetServerTimeNow() - bedwars.SwordController.lastAttack) < 0
+									if (workspace:GetServerTimeNow() - bedwars.SwordController.lastAttack) < 0.02 then
+										break
+									end
+									local selfpos = selfrootpos + (killaurarange.Value > 14 and (selfrootpos - root.Position).magnitude > 14.4 and (CFrame.lookAt(selfrootpos, root.Position).lookVector * ((selfrootpos - root.Position).magnitude - 14)) or Vector3
