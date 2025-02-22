@@ -718,6 +718,7 @@ run(function()
 		AfkStatus = debug.getproto(Knit.Controllers.AfkController.KnitStart, 1),
 		AttackEntity = Knit.Controllers.SwordController.sendServerRequest,
 		BeePickup = Knit.Controllers.BeeNetController.trigger,
+                ConsumeItem = debug.getproto(Knit.Controllers.ConsumeController.onEnable, 1),
 		CannonLaunch = Knit.Controllers.CannonHandController.launchSelf,
 		ConsumeSoul = Knit.Controllers.GrimReaperController.consumeSoul,
 		ConsumeTreeOrb = debug.getproto(Knit.Controllers.EldertreeController.createTreeOrbInteraction, 1),
