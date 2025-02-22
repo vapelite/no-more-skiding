@@ -8546,7 +8546,7 @@ run(function()
 	end
 
 	Killaura = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-		Name = "Killaura",
+		Name = "KillauraOLD",
 		Function = function(callback)
 			if callback then
 				if killauraaimcirclepart then killauraaimcirclepart.Parent = gameCamera end
