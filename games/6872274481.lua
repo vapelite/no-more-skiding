@@ -8370,7 +8370,9 @@ run(function()
 		Name = 'Effects',
 		List = WinEffectName
 	})
-end)run(function()
+end)
+
+run(function()
 	local Killaura
 	local Targets
 	local Sort
@@ -8661,7 +8663,7 @@ end)run(function()
 									if not root then
 										continue
 									end
-									local localfacing = entityLibrary.character.HumanoidRootPart.CFrame.lookVector
+									local localfacing = entityLibrary.character.HumanoidRootPart.CFrame.LookVector
 									local vec = (plr.RootPart.Position - entityLibrary.character.HumanoidRootPart.Position).unit
 									local angle = math.acos(localfacing:Dot(vec))
 									if angle >= (math.rad(AngleSlider.Value) / 2) then
@@ -8698,4 +8700,5 @@ end)run(function()
 									if (workspace:GetServerTimeNow() - bedwars.SwordController.lastAttack) < 0.02 then
 										break
 									end
-									local selfpos = selfrootpos + (killaurarange.Value > 14 and (selfrootpos - root.Position).magnitude > 14.4 and (CFrame.lookAt(selfrootpos, root.Position).lookVector * ((selfrootpos - root.Position).magnitude - 14)) or
+									local selfpos = selfrootpos + (killaurarange.Value > 14 and (selfrootpos - root.Position).Magnitude > 14.4 and (CFrame.lookAt(selfrootpos, root.Position).lookVector * ((selfrootpos - root.Position).Magnitude - 14)) or Vector3.zero)
+									bedwars.SwordController.lastAttack
