@@ -7330,7 +7330,7 @@ run(function()
 	local old
 	local Image
 	
-	local Crosshair = vape.Legit:CreateModule({
+	local Crosshair = vape.Categories.Combat:CreateModule({
 		Name = 'Crosshair',
 		Function = function(callback)
 			if callback then 
@@ -8427,7 +8427,7 @@ run(function()
 	end
 
 	Killaura = vape.Categories.Blatant:CreateModule({
-		Name = 'Killaura',
+		Name = 'MackyHAHA',
 		Function = function(callback)
 			if callback then
 				if inputService.TouchEnabled then
