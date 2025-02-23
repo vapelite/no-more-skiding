@@ -4962,7 +4962,11 @@ run(function()
 						if wool then
 							local root = entitylib.character.RootPart
 							if Tower.Enabled and inputService:IsKeyDown(Enum.KeyCode.Space) and (not inputService:GetFocusedTextBox()) then
-								root.Velocity = Vector3.new(root.Velocity.X, 35, root.Velocity.Z)
+								-- Freeze horizontal movement (stop motion)
+								root.Velocity = Vector3.new(0, 35, 0)  -- Set X and Z velocity to 0, keep Y velocity for upward movement
+							else
+								-- Restore normal movement when not tower-building
+								root.Velocity = Vector3.new(root.Velocity.X, root.Velocity.Y, root.Velocity.Z)
 							end
 	
 							for i = Expand.Value, 1, -1 do
