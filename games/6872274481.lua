@@ -4962,7 +4962,7 @@ run(function()
 						if wool then
 							local root = entitylib.character.RootPart
 							if Tower.Enabled and inputService:IsKeyDown(Enum.KeyCode.Space) and (not inputService:GetFocusedTextBox()) then
-								root.Velocity = Vector3.new(root.Velocity.X, 30, root.Velocity.Z)
+								root.Velocity = Vector3.new(root.Velocity.X, 35, root.Velocity.Z)
 							end
 	
 							for i = Expand.Value, 1, -1 do
