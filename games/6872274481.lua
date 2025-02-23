@@ -4988,7 +4988,7 @@ run(function()
 						end
 					end
 	
-					task.wait(0.03)
+					task.wait(0.001)
 				until not Scaffold.Enabled
 			else
 				Label = nil
