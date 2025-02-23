@@ -8427,7 +8427,7 @@ run(function()
 	end
 
 	Killaura = vape.Categories.Blatant:CreateModule({
-		Name = 'KillauraYO',
+		Name = 'Killaura',
 		Function = function(callback)
 			if callback then
 				if inputService.TouchEnabled then
@@ -8821,4 +8821,4 @@ run(function()
 		Tooltip = 'Only attacks while swinging manually'
 	})
 end)
-																							end)
+	
